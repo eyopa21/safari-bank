@@ -75,6 +75,9 @@ public class Payout {
 
     public static Payout accepted(String payoutId, String bankAccount, BigDecimal amount,
                                   String bankRef, PayoutStatus outcome, String eventId) {
+        if (outcome != PayoutStatus.SUCCEEDED && outcome != PayoutStatus.FAILED) {
+            throw new IllegalArgumentException("outcome must be SUCCEEDED or FAILED, was " + outcome);
+        }
         Payout p = new Payout(payoutId, bankAccount, amount);
         p.result = PayoutResult.ACCEPTED;
         p.bankRef = bankRef;
