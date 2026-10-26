@@ -47,7 +47,7 @@ public class PayoutService {
         }
         Payout payout = payouts.save(Payout.accepted(payoutId, bankAccount, amount,
                 newBankRef(), decideOutcome(bankAccount), UUID.randomUUID().toString()));
-        callbacks.scheduleFor(payout);
+        callbacks.enqueue(payout);
         return payout;
     }
 

@@ -21,6 +21,7 @@ public record PayoutProperties(
             double duplicateRate,
             Duration responseTimeout,
             Duration retryInterval,
-            int maxRetries) {
+            int maxRetries,
+            Duration pollInterval) {
     }
 }
